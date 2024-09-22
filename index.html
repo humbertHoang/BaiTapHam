@@ -20,11 +20,237 @@
   </head>
 
   <body>
-    <main>
-      <div class="container">
-        <div class="card w-75 mx-auto">
-          <div class="bg-holder bg-card d-none d-lg-block"></div>
-          <!-- <div class="card-body"></div> -->
+    <main class="container">
+      <div class="card w-75 mx-auto">
+        <div class="card-body">
+          <div class="row">
+            <nav
+              class="col col-md-4 col-lg-3 col-xl-2 nav flex-md-column nav-pills"
+              id="v-pills-tab"
+              role="tablist"
+              aria-orientation="vertical"
+            >
+              <button
+                class="nav-link btn-tabs active"
+                id="v-pills-bai1-tab"
+                data-bs-toggle="pill"
+                data-bs-target="#bai1"
+                type="button"
+                role="tab"
+                aria-controls="v-pills-bai1"
+                aria-selected="true"
+              >
+                Bài 1
+              </button>
+              <button
+                class="nav-link btn-tabs"
+                id="v-pills-bai2-tab"
+                data-bs-toggle="pill"
+                data-bs-target="#bai2"
+                type="button"
+                role="tab"
+                aria-controls="v-pills-bai2"
+                aria-selected="false"
+              >
+                Bài 2
+              </button>
+              <button
+                class="nav-link btn-tabs"
+                id="v-pills-bai3-tab"
+                data-bs-toggle="pill"
+                data-bs-target="#bai3"
+                type="button"
+                role="tab"
+                aria-controls="v-pills-bai3"
+                aria-selected="false"
+              >
+                Bài 3
+              </button>
+              <button
+                class="nav-link btn-tabs"
+                id="v-pills-bai4-tab"
+                data-bs-toggle="pill"
+                data-bs-target="#bai4"
+                type="button"
+                role="tab"
+                aria-controls="v-pills-bai4"
+                aria-selected="false"
+              >
+                Bài 4
+              </button>
+            </nav>
+            <div
+              class="col col-md-8 col-lg-9 col-xl-10 tab-content"
+              id="v-pills-tabContent"
+            >
+              <div
+                class="tab-pane fade show active"
+                id="bai1"
+                role="tabpanel"
+                aria-labelledby="v-pills-bai1-tab"
+                tabindex="0"
+              >
+                <h4>🏫 Quản lý tuyển sinh</h4>
+                <form class="row g-3 align-items-center">
+                  <div class="col col-lg-4">
+                    <div class="form-floating">
+                      <input
+                        class="form-control"
+                        type="number"
+                        name="diemchuan"
+                        id="diemchuanInput"
+                        placeholder="Điểm chuẩn"
+                        min="0"
+                        max="30"
+                      />
+                      <label for="diemchuanInput">Điểm chuẩn</label>
+                    </div>
+                  </div>
+                  <div class="col col-lg-4">
+                    <div class="form-floating">
+                      <select class="form-select" id="khuvucInput">
+                        <option selected disabled value="0">Chọn...</option>
+                        <option value="2">A</option>
+                        <option value="1">B</option>
+                        <option value="0.5">C</option>
+                      </select>
+                      <label for="khuvucInput">Chọn khu vực</label>
+                    </div>
+                  </div>
+                  <div class="col col-lg-4">
+                    <div class="form-floating">
+                      <select class="form-select" id="doituongInput">
+                        <option selected disabled value="0">Chọn...</option>
+                        <option value="2.5">1</option>
+                        <option value="1.5">2</option>
+                        <option value="1">3</option>
+                      </select>
+                      <label for="doituongInput">Chọn đối tượng</label>
+                    </div>
+                  </div>
+                  <div class="col col-lg-4">
+                    <div class="form-floating">
+                      <input
+                        class="form-control"
+                        type="number"
+                        name="diemMon"
+                        id="diemmon1Input"
+                        placeholder="Nhập điểm môn thứ 1"
+                        min="0"
+                        max="10"
+                      />
+                      <label for="diemmon1Input">Điểm môn thứ 1</label>
+                    </div>
+                  </div>
+                  <div class="col col-lg-4">
+                    <div class="form-floating">
+                      <input
+                        class="form-control"
+                        type="number"
+                        name="diemMon"
+                        id="diemmon2Input"
+                        placeholder="Nhập điểm môn thứ 2"
+                        min="0"
+                        max="10"
+                      />
+                      <label for="diemmon2Input">Điểm môn thứ 2</label>
+                    </div>
+                  </div>
+                  <div class="col col-lg-4">
+                    <div class="form-floating">
+                      <input
+                        class="form-control"
+                        type="number"
+                        name="diemMon"
+                        id="diemmon3Input"
+                        placeholder="Nhập điểm môn thứ 3"
+                        min="0"
+                        max="10"
+                      />
+                      <label for="diemmon3Input">Điểm môn thứ 3</label>
+                    </div>
+                  </div>
+                  <div class="col text-center">
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      id="btnSubmit"
+                    >
+                      Kiểm tra
+                    </button>
+                  </div>
+                  <div class="alert alert-success visually-hidden" role="alert">
+                    👉 <span id="result"></span>
+                  </div>
+                </form>
+              </div>
+              <div
+                class="tab-pane fade"
+                id="bai2"
+                role="tabpanel"
+                aria-labelledby="v-pills-bai2-tab"
+                tabindex="0"
+              >
+                <h4>🔋 Tính tiền điện</h4>
+                <form class="row g-3 align-items-center">
+                  <div class="col col-lg-6">
+                    <div class="form-floating">
+                      <input
+                        class="form-control"
+                        type="text"
+                        name="hoten"
+                        id="hotenInput"
+                        placeholder="Nhập họ tên"
+                      />
+                      <label for="hotenInput">Nhập họ tên</label>
+                    </div>
+                  </div>
+                  <div class="col col-lg-6">
+                    <div class="form-floating">
+                      <input
+                        class="form-control"
+                        type="number"
+                        name="kw"
+                        id="kwInput"
+                        placeholder="Nhập số kw"
+                      />
+                      <label for="kwInput">Nhập số kw</label>
+                    </div>
+                  </div>
+                  <div class="col text-center">
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      id="btnSubmit"
+                    >
+                      Kiểm tra
+                    </button>
+                  </div>
+                  <div class="alert alert-success visually-hidden" role="alert">
+                    👉 <span id="result"></span>
+                  </div>
+                </form>
+              </div>
+              <div
+                class="tab-pane fade"
+                id="bai3"
+                role="tabpanel"
+                aria-labelledby="v-pills-bai3-tab"
+                tabindex="0"
+              >
+                ...
+              </div>
+              <div
+                class="tab-pane fade"
+                id="bai4"
+                role="tabpanel"
+                aria-labelledby="v-pills-bai4-tab"
+                tabindex="0"
+              >
+                ...
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </main>
