@@ -31,5 +31,31 @@ document.getElementById("btnSubmit").onclick = quanliTuyensinh;
 function tinhTienDien() {
   let hoTen = document.getElementById("hotenInput").value;
   let soKw = +document.getElementById("kwInput").value;
+  console.log(hoTen, soKw);
+  let tienDien = 0;
+  const ketqua = document.getElementById("result2").parentElement;
+  if (soKw > 0 && soKw <= 50) {
+    let tienDien = soKw * 500;
+    ketqua.classList.remove("visually-hidden");
+    ketqua.firstElementChild.innerHTML = `Họ tên: ${hoTen} sử dụng ${tienDien} VND tiền điện`;
+  } else if (soKw > 50 && soKw <= 100) {
+    tienDien = 50 * 500 + (soKw - 50) * 650;
+    ketqua.classList.remove("visually-hidden");
+    ketqua.firstElementChild.innerHTML = `Họ tên: ${hoTen} sử dụng ${tienDien} VND tiền điện`;
+  } else if (soKw > 100 && soKw <= 200) {
+    tienDien = 50 * 500 + 50 * 650 + (soKw - 100) * 850;
+    ketqua.classList.remove("visually-hidden");
+    ketqua.firstElementChild.innerHTML = `Họ tên: ${hoTen} sử dụng ${tienDien} VND tiền điện`;
+  } else if (soKw > 200 && soKw <= 350) {
+    tienDien = 50 * 500 + 50 * 650 + 100 * 850 + (soKw - 200) * 1100;
+    ketqua.classList.remove("visually-hidden");
+    ketqua.firstElementChild.innerHTML = `Họ tên: ${hoTen} sử dụng ${tienDien} VND tiền điện`;
+  } else {
+    tienDien =
+      50 * 500 + 50 * 650 + 100 * 850 + 150 * 1100 + (soKw - 350) * 1300;
+    ketqua.classList.remove("visually-hidden");
+    ketqua.firstElementChild.innerHTML = `Họ tên: ${hoTen} sử dụng ${tienDien} VND tiền điện`;
+  }
 }
+document.getElementById("btnSubmitBai2").onclick = tinhTienDien;
 // Bài 3
