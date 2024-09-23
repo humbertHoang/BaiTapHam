@@ -83,6 +83,7 @@
               class="col col-md-8 col-lg-9 col-xl-10 tab-content"
               id="v-pills-tabContent"
             >
+              <!-- Bai 1 -->
               <div
                 class="tab-pane fade show active"
                 id="bai1"
@@ -184,6 +185,8 @@
                   </div>
                 </form>
               </div>
+              <!-- Bai 1 -->
+              <!-- Bai 2 -->
               <div
                 class="tab-pane fade"
                 id="bai2"
@@ -227,10 +230,15 @@
                     </button>
                   </div>
                   <div class="alert alert-success visually-hidden" role="alert">
-                    👉 <span id="result2"></span>
+                    👉 <span id="successTienDien"></span>
+                  </div>
+                  <div class="alert alert-danger visually-hidden" role="alert">
+                    ❌ <span id="dangerTienDien"></span>
                   </div>
                 </form>
               </div>
+              <!-- Bai 2 -->
+              <!-- Bai 3 -->
               <div
                 class="tab-pane fade"
                 id="bai3"
@@ -238,8 +246,59 @@
                 aria-labelledby="v-pills-bai3-tab"
                 tabindex="0"
               >
-                ...
+                <h4>💰 Tính thuế thu nhập cá nhân</h4>
+                <form class="row g-3 align-items-center">
+                  <div class="col col-lg-4">
+                    <div class="form-floating">
+                      <input
+                        class="form-control"
+                        type="text"
+                        name="hotenInputbai3"
+                        id="hotenInputbai3"
+                        placeholder="Nhập họ tên"
+                      />
+                      <label for="hotenInputbai3">Nhập họ tên</label>
+                    </div>
+                  </div>
+                  <div class="col col-lg-4">
+                    <div class="form-floating">
+                      <input
+                        class="form-control"
+                        type="number"
+                        name="tongThuNhap"
+                        id="tongThuNhap"
+                        placeholder="Nhập số kw"
+                      />
+                      <label for="tongThuNhap">Tổng thu nhập</label>
+                    </div>
+                  </div>
+                  <div class="col col-lg-4">
+                    <div class="form-floating">
+                      <input
+                        class="form-control"
+                        type="number"
+                        name="nguoiphuthuoc"
+                        id="nguoiphuthuoc"
+                        placeholder="Số người phụ thuộc"
+                      />
+                      <label for="nguoiphuthuoc">Số người phụ thuộc</label>
+                    </div>
+                  </div>
+                  <div class="col text-center">
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      id="btnSubmitBai3"
+                    >
+                      Tính tiền thuế
+                    </button>
+                  </div>
+                  <div class="alert alert-success visually-hidden" role="alert">
+                    👉 <span id="successTienThue"></span>
+                  </div>
+                </form>
               </div>
+              <!-- Bai 3 -->
               <div
                 class="tab-pane fade"
                 id="bai4"
@@ -247,7 +306,57 @@
                 aria-labelledby="v-pills-bai4-tab"
                 tabindex="0"
               >
-                ...
+                <h4>🕸️ Tính tiền cáp</h4>
+                <form class="row g-3 align-items-center">
+                  <div class="col col-lg-4">
+                    <div class="form-floating">
+                      <input
+                        class="form-control"
+                        type="text"
+                        name="hotenInputbai3"
+                        id="hotenInputbai3"
+                        placeholder="Nhập họ tên"
+                      />
+                      <label for="hotenInputbai3">Nhập họ tên</label>
+                    </div>
+                  </div>
+                  <div class="col col-lg-4">
+                    <div class="form-floating">
+                      <input
+                        class="form-control"
+                        type="number"
+                        name="tongThuNhap"
+                        id="tongThuNhap"
+                        placeholder="Nhập số kw"
+                      />
+                      <label for="tongThuNhap">Tổng thu nhập</label>
+                    </div>
+                  </div>
+                  <div class="col col-lg-4">
+                    <div class="form-floating">
+                      <input
+                        class="form-control"
+                        type="number"
+                        name="nguoiphuthuoc"
+                        id="nguoiphuthuoc"
+                        placeholder="Số người phụ thuộc"
+                      />
+                      <label for="nguoiphuthuoc">Số người phụ thuộc</label>
+                    </div>
+                  </div>
+                  <div class="col text-center">
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      id="btnSubmitBai3"
+                    >
+                      Tính tiền thuế
+                    </button>
+                  </div>
+                  <div class="alert alert-success visually-hidden" role="alert">
+                    👉 <span id="successTienThue"></span>
+                  </div>
+                </form>
               </div>
             </div>
           </div>

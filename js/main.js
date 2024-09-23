@@ -28,34 +28,108 @@ document.getElementById("btnSubmit").onclick = quanliTuyensinh;
 
 // Bài 2
 // Tính tiền điện
+const TIEN_DIEN = [
+  { from: 0, to: 50, gia: 500 },
+  { from: 50, to: 100, gia: 650 },
+  { from: 100, to: 200, gia: 850 },
+  { from: 200, to: 350, gia: 1100 },
+  { from: 350, to: Infinity, gia: 1300 },
+];
+
 function tinhTienDien() {
-  let hoTen = document.getElementById("hotenInput").value;
-  let soKw = +document.getElementById("kwInput").value;
-  console.log(hoTen, soKw);
+  const hoTen = document.getElementById("hotenInput").value;
+  const soKw = +document.getElementById("kwInput").value;
+  let successKq = document.getElementById("successTienDien").parentElement;
+  let dangerKq = document.getElementById("dangerTienDien").parentElement;
   let tienDien = 0;
-  const ketqua = document.getElementById("result2").parentElement;
-  if (soKw > 0 && soKw <= 50) {
-    let tienDien = soKw * 500;
-    ketqua.classList.remove("visually-hidden");
-    ketqua.firstElementChild.innerHTML = `Họ tên: ${hoTen} sử dụng ${tienDien} VND tiền điện`;
-  } else if (soKw > 50 && soKw <= 100) {
-    tienDien = 50 * 500 + (soKw - 50) * 650;
-    ketqua.classList.remove("visually-hidden");
-    ketqua.firstElementChild.innerHTML = `Họ tên: ${hoTen} sử dụng ${tienDien} VND tiền điện`;
-  } else if (soKw > 100 && soKw <= 200) {
-    tienDien = 50 * 500 + 50 * 650 + (soKw - 100) * 850;
-    ketqua.classList.remove("visually-hidden");
-    ketqua.firstElementChild.innerHTML = `Họ tên: ${hoTen} sử dụng ${tienDien} VND tiền điện`;
-  } else if (soKw > 200 && soKw <= 350) {
-    tienDien = 50 * 500 + 50 * 650 + 100 * 850 + (soKw - 200) * 1100;
-    ketqua.classList.remove("visually-hidden");
-    ketqua.firstElementChild.innerHTML = `Họ tên: ${hoTen} sử dụng ${tienDien} VND tiền điện`;
+
+  if (soKw > 0) {
+    let prevTo = 0; // Mốc điện đầu
+    for (const { from, to, gia } of TIEN_DIEN) {
+      const delta = Math.min(to, soKw) - prevTo;
+      tienDien += delta * gia;
+      prevTo = to;
+      if (soKw <= to) break;
+    }
+    tienDien = new Intl.NumberFormat("vn-VN").format(tienDien);
+    if (dangerKq.classList.contains("visually-hidden")) {
+      successKq.classList.remove("visually-hidden");
+      successKq.firstElementChild.innerHTML = `Họ tên: ${hoTen}; Tiền điện: ${tienDien} VND`;
+    } else {
+      dangerKq.classList.add("visually-hidden");
+      successKq.classList.remove("visually-hidden");
+      successKq.firstElementChild.innerHTML = `Họ tên: ${hoTen}; Tiền điện: ${tienDien} VND`;
+    }
   } else {
-    tienDien =
-      50 * 500 + 50 * 650 + 100 * 850 + 150 * 1100 + (soKw - 350) * 1300;
-    ketqua.classList.remove("visually-hidden");
-    ketqua.firstElementChild.innerHTML = `Họ tên: ${hoTen} sử dụng ${tienDien} VND tiền điện`;
+    if (successKq.classList.contains("visually-hidden")) {
+      dangerKq.classList.remove("visually-hidden");
+      dangerKq.firstElementChild.innerHTML =
+        "Số KW không hợp lệ! Vui lòng nhập lại số KW";
+    } else {
+      successKq.classList.add("visually-hidden");
+      dangerKq.classList.remove("visually-hidden");
+      dangerKq.firstElementChild.innerHTML =
+        "Số KW không hợp lệ! Vui lòng nhập lại số KW";
+    }
   }
 }
 document.getElementById("btnSubmitBai2").onclick = tinhTienDien;
+
 // Bài 3
+//Tính thuế thu nhập cá nhân
+/**
+ * -Input:
+ *  + hoTen: str
+ *  + tongThuNhap: number
+ *  + soNguoiPhuThuoc: number
+ * -Process:
+ *  + thueThuNhap: number = tongThuNhap - 4tr - (soNguoiPhuThuoc * 1,6tr)
+ * -Output:
+ */
+
+function tinhTienThue() {
+  const hoTen = document.getElementById("hotenInputbai3").value;
+  const tongThuNhap = +document.getElementById("tongThuNhap").value;
+  const soNguoiPhuThuoc = +document.getElementById("nguoiphuthuoc").value;
+  let successKq = document.getElementById("successTienThue").parentElement;
+  let thueThuNhap = 0;
+  let chiuthueThuNhap = tongThuNhap - 4e6 - soNguoiPhuThuoc * 1.6e6;
+  chiuthueThuNhap > 0 && chiuthueThuNhap <= 6e7
+    ? (thueThuNhap = 0.05 * chiuthueThuNhap)
+    : chiuthueThuNhap > 6e7 && chiuthueThuNhap <= 12e7
+    ? (thueThuNhap = 0.05 * 6e7 + 0.1 * (chiuthueThuNhap - 6e7))
+    : chiuthueThuNhap > 12e7 && chiuthueThuNhap <= 21e7
+    ? (thueThuNhap = 0.05 * 6e7 + 0.1 * 12e7 + 0.15 * (chiuthueThuNhap - 12e7))
+    : chiuthueThuNhap > 21e7 && chiuthueThuNhap <= 384e6
+    ? (thueThuNhap =
+        0.05 * 6e7 + 0.1 * 12e7 + 0.15 * 21e7 + 0.2 * (chiuthueThuNhap - 21e7))
+    : chiuthueThuNhap > 384e6 && chiuthueThuNhap <= 624e6
+    ? (thueThuNhap =
+        0.05 * 6e7 +
+        0.1 * 12e7 +
+        0.15 * 21e7 +
+        0.2 * 384e6 +
+        0.25 * (chiuthueThuNhap - 384e6))
+    : chiuthueThuNhap > 624e6 && chiuthueThuNhap <= 96e7
+    ? (thueThuNhap =
+        0.05 * 6e7 +
+        0.1 * 12e7 +
+        0.15 * 21e7 +
+        0.2 * 384e6 +
+        0.25 * 624e6 +
+        0.3 * (chiuthueThuNhap - 624e6))
+    : chiuthueThuNhap > 96e7
+    ? (thueThuNhap =
+        0.05 * 6e7 +
+        0.1 * 12e7 +
+        0.15 * 21e7 +
+        0.2 * 384e6 +
+        0.25 * 624e6 +
+        0.3 * 96e7 +
+        0.35 * (chiuthueThuNhap - 96e7))
+    : alert("Số tiền thu nhập không hợp lệ"),
+    (thueThuNhap = new Intl.NumberFormat("vn-VN").format(thueThuNhap)),
+    successKq.classList.remove("visually-hidden"),
+    (successKq.firstElementChild.innerHTML = `Họ tên: ${hoTen} | Tiền thuế thu nhập cá nhân: ${thueThuNhap} VND`);
+}
+document.getElementById("btnSubmitBai3").onclick = tinhTienThue;
