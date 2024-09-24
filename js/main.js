@@ -77,15 +77,6 @@ document.getElementById("btnSubmitBai2").onclick = tinhTienDien;
 
 // Bài 3
 //Tính thuế thu nhập cá nhân
-/**
- * -Input:
- *  + hoTen: str
- *  + tongThuNhap: number
- *  + soNguoiPhuThuoc: number
- * -Process:
- *  + thueThuNhap: number = tongThuNhap - 4tr - (soNguoiPhuThuoc * 1,6tr)
- * -Output:
- */
 
 function tinhTienThue() {
   const hoTen = document.getElementById("hotenInputbai3").value;
@@ -133,3 +124,38 @@ function tinhTienThue() {
     (successKq.firstElementChild.innerHTML = `Họ tên: ${hoTen} | Tiền thuế thu nhập cá nhân: ${thueThuNhap} VND`);
 }
 document.getElementById("btnSubmitBai3").onclick = tinhTienThue;
+
+//Bài 4
+//Tính tiền cáp
+function tinhTienCap() {
+  let customerInput = document.getElementById("customerInput").value;
+  let makhInput = document.getElementById("makhInput").value;
+  let soketnoiInput = +document.getElementById("soketnoiInput").value;
+  let kenhcaocapInput = +document.getElementById("kenhcaocapInput").value;
+  let successKq = document.getElementById("successTienCap").parentElement;
+  let tienCap = 0;
+  customerInput === "household"
+    ? (tienCap = 4.5 + 20.5 + 7.5 * kenhcaocapInput)
+    : customerInput === "company"
+    ? (tienCap =
+        15 +
+        50 * kenhcaocapInput +
+        75 +
+        (soketnoiInput > 10 ? (soketnoiInput - 10) * 5 : 0))
+    : alert("Loại khách hàng không hợp lệ"),
+    (tienCap = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    }).format(tienCap)),
+    successKq.classList.remove("visually-hidden"),
+    (successKq.firstElementChild.innerHTML = `Mã khách hàng: ${makhInput} | Tiền cáp: ${tienCap}`);
+}
+document.getElementById("customerInput").onchange = () => {
+  document
+    .getElementById("soketnoiInput")
+    .parentElement.parentElement.classList.toggle(
+      "visually-hidden",
+      document.getElementById("customerInput").value !== "company"
+    );
+};
+document.getElementById("btnSubmitBai4").onclick = tinhTienCap;
